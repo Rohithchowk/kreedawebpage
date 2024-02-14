@@ -37,12 +37,12 @@ const Chess = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/getMatches_chess")
+      .get("http://13.201.93.229:5000/api/auth/getMatches_chess")
       .then((response) => setMatches(response.data))
       .catch((error) => console.error(error));
 
     axios
-      .get(`http://localhost:5000/api/auth/sportsItems/name/chess`)
+      .get(`http://13.201.93.229:5000/api/auth/sportsItems/name/chess`)
       .then((response) => {
         setFootballImage(response.data.image);
       })
@@ -72,7 +72,7 @@ const Chess = () => {
       console.log('Request Payload:', { matchId, team, score: newScore });
   
       // Send update request to backend
-      const response = await axios.put(`http://localhost:5000/api/auth/update-score_chess/${matchId}`, {
+      const response = await axios.put(`http://13.201.93.229:5000/api/auth/update-score_chess/${matchId}`, {
         team,
         score: newScore,
       });
@@ -109,7 +109,7 @@ const Chess = () => {
       // Update existing match
       axios
         .put(
-          `http://localhost:5000/api/auth/updateMatch_chess/${selectedMatch._id}`,
+          `http://13.201.93.229:5000/api/auth/updateMatch_chess/${selectedMatch._id}`,
           {
             teamA: newMatch.teamA,
             teamB: newMatch.teamB,
@@ -135,7 +135,7 @@ const Chess = () => {
     } else {
       // Add new match
       axios
-        .post("http://localhost:5000/api/auth/addMatch_chess", {
+        .post("http://13.201.93.229:5000/api/auth/addMatch_chess", {
           teamA: newMatch.teamA,
           teamB: newMatch.teamB,
           name: `${newMatch.teamA || "Team A"} VS ${
@@ -158,7 +158,7 @@ const Chess = () => {
     if (selectedMatch) {
       axios
         .delete(
-          `http://localhost:5000/api/auth/deleteMatch_chess/${selectedMatch._id}`
+          `http://13.201.93.229:5000/api/auth/deleteMatch_chess/${selectedMatch._id}`
         )
         .then(() => {
           setMatches(
@@ -180,14 +180,14 @@ const Chess = () => {
 
     axios
       .get(
-        `http://localhost:5000/api/auth/getPlayers_chess/${match._id}?team=TeamA`
+        `http://13.201.93.229:5000/api/auth/getPlayers_chess/${match._id}?team=TeamA`
       )
       .then((response) => setPlayersTeamA(response.data))
       .catch((error) => console.error(error));
 
     axios
       .get(
-        `http://localhost:5000/api/auth/getPlayers_chess/${match._id}?team=TeamB`
+        `http://13.201.93.229:5000/api/auth/getPlayers_chess/${match._id}?team=TeamB`
       )
       .then((response) => setPlayersTeamB(response.data))
       .catch((error) => console.error(error));
@@ -220,7 +220,7 @@ const Chess = () => {
     if (selectedMatch) {
       axios
         .post(
-          `http://localhost:5000/api/auth/addPlayers_chess/${selectedMatch._id}`,
+          `http://13.201.93.229:5000/api/auth/addPlayers_chess/${selectedMatch._id}`,
           {
             ...playerFormData,
             rollNo: parseInt(playerFormData.rollNo), // Parse rollNo to integer
@@ -258,7 +258,7 @@ const Chess = () => {
       // Update existing player
       axios
         .put(
-          `http://localhost:5000/api/auth/updatePlayerDetails_chess/${matchId}/${playerId}`,
+          `http://13.201.93.229:5000/api/auth/updatePlayerDetails_chess/${matchId}/${playerId}`,
           {
             player_name: playerFormData.player_name,
             roll_no: parseInt(playerFormData.roll_no), // Parse rollNo to integer
@@ -312,7 +312,7 @@ const Chess = () => {
 
       axios
         .delete(
-          `http://localhost:5000/api/auth/deletePlayerDetails_chess/${playerId}/${matchId}`
+          `http://13.201.93.229:5000/api/auth/deletePlayerDetails_chess/${playerId}/${matchId}`
         )
         .then(() => {
           const updatedPlayers =

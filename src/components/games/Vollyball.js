@@ -46,12 +46,12 @@ const Vollyball = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/getMatches_volly")
+      .get("http://13.201.93.229:5000/api/auth/getMatches_volly")
       .then((response) => setMatches(response.data))
       .catch((error) => console.error(error));
 
     axios
-      .get(`http://localhost:5000/api/auth/sportsItems/name/vollyball`)
+      .get(`http://13.201.93.229:5000/api/auth/sportsItems/name/vollyball`)
       .then((response) => {
         setFootballImage(response.data.image);
       })
@@ -90,7 +90,7 @@ const Vollyball = () => {
       console.log('Request Payload:', { matchId, team, score: newScore });
   
       // Send update request to backend
-      const response = await axios.put(`http://localhost:5000/api/auth/update-score_volly/${matchId}`, {
+      const response = await axios.put(`http://13.201.93.229:5000/api/auth/update-score_volly/${matchId}`, {
         team,
         score: newScore,
       });
@@ -123,7 +123,7 @@ const Vollyball = () => {
       console.log('Request Payload:', { matchId, team, score: newScore });
   
       // Send update request to backend
-      const response = await axios.put(`http://localhost:5000/api/auth/update-score_vollynew/${matchId}`, {
+      const response = await axios.put(`http://13.201.93.229:5000/api/auth/update-score_vollynew/${matchId}`, {
         team,
         score: newScore,
       });
@@ -157,7 +157,7 @@ const Vollyball = () => {
       console.log('Request Payload:', { matchId, team, score: newScore });
   
       // Send update request to backend
-      const response = await axios.put(`http://localhost:5000/api/auth/update-score_vollynews/${matchId}`, {
+      const response = await axios.put(`http://13.201.93.229:5000/api/auth/update-score_vollynews/${matchId}`, {
         team,
         score: newScore,
       });
@@ -194,7 +194,7 @@ const Vollyball = () => {
       // Update existing match
       axios
         .put(
-          `http://localhost:5000/api/auth/updateMatch_volly/${selectedMatch._id}`,
+          `http://13.201.93.229:5000/api/auth/updateMatch_volly/${selectedMatch._id}`,
           {
             teamA: newMatch.teamA,
             teamB: newMatch.teamB,
@@ -221,7 +221,7 @@ const Vollyball = () => {
     } else {
       // Add new match
       axios
-        .post("http://localhost:5000/api/auth/addMatch_volly", {
+        .post("http://13.201.93.229:5000/api/auth/addMatch_volly", {
           teamA: newMatch.teamA,
           teamB: newMatch.teamB,
           name: `${newMatch.teamA || "Team A"} VS ${
@@ -245,7 +245,7 @@ const Vollyball = () => {
     if (selectedMatch) {
       axios
         .delete(
-          `http://localhost:5000/api/auth/deleteMatch_volly/${selectedMatch._id}`
+          `http://13.201.93.229:5000/api/auth/deleteMatch_volly/${selectedMatch._id}`
         )
         .then(() => {
           setMatches(
@@ -267,14 +267,14 @@ const Vollyball = () => {
 
     axios
       .get(
-        `http://localhost:5000/api/auth/getPlayers_volly/${match._id}?team=TeamA`
+        `http://13.201.93.229:5000/api/auth/getPlayers_volly/${match._id}?team=TeamA`
       )
       .then((response) => setPlayersTeamA(response.data))
       .catch((error) => console.error(error));
 
     axios
       .get(
-        `http://localhost:5000/api/auth/getPlayers_volly/${match._id}?team=TeamB`
+        `http://13.201.93.229:5000/api/auth/getPlayers_volly/${match._id}?team=TeamB`
       )
       .then((response) => setPlayersTeamB(response.data))
       .catch((error) => console.error(error));
@@ -307,7 +307,7 @@ const Vollyball = () => {
     if (selectedMatch) {
       axios
         .post(
-          `http://localhost:5000/api/auth/addPlayers_volly/${selectedMatch._id}`,
+          `http://13.201.93.229:5000/api/auth/addPlayers_volly/${selectedMatch._id}`,
           {
             ...playerFormData,
             rollNo: parseInt(playerFormData.rollNo), // Parse rollNo to integer
@@ -345,7 +345,7 @@ const Vollyball = () => {
       // Update existing player
       axios
         .put(
-          `http://localhost:5000/api/auth/updatePlayerDetails_volly/${matchId}/${playerId}`,
+          `http://13.201.93.229:5000/api/auth/updatePlayerDetails_volly/${matchId}/${playerId}`,
           {
             player_name: playerFormData.player_name,
             roll_no: parseInt(playerFormData.roll_no), // Parse rollNo to integer
@@ -399,7 +399,7 @@ const Vollyball = () => {
 
       axios
         .delete(
-          `http://localhost:5000/api/auth/deletePlayerDetails_volly/${playerId}/${matchId}`
+          `http://13.201.93.229:5000/api/auth/deletePlayerDetails_volly/${playerId}/${matchId}`
         )
         .then(() => {
           const updatedPlayers =

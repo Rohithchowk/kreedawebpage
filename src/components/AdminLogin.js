@@ -23,7 +23,7 @@ const AdminLogin = () => {
   const handleLogin = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/admin_login",
+        "http://13.201.93.229:5000/api/auth/admin_login",
         {
           method: "POST",
           headers: {

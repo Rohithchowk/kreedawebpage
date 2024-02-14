@@ -37,12 +37,12 @@ const Badminton = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/getMatches_Bad")
+      .get("http://13.201.93.229:5000/api/auth/getMatches_Bad")
       .then((response) => setMatches(response.data))
       .catch((error) => console.error(error));
 
     axios
-      .get(`http://localhost:5000/api/auth/sportsItems/name/badminton`)
+      .get(`http://13.201.93.229:5000/api/auth/sportsItems/name/badminton`)
       .then((response) => {
         setFootballImage(response.data.image);
       })
@@ -72,7 +72,7 @@ const Badminton = () => {
       console.log('Request Payload:', { matchId, team, score: newScore });
   
       // Send update request to backend
-      const response = await axios.put(`http://localhost:5000/api/auth/update-score_Bad/${matchId}`, {
+      const response = await axios.put(`http://13.201.93.229:5000/api/auth/update-score_Bad/${matchId}`, {
         team,
         score: newScore,
       });
@@ -109,7 +109,7 @@ const Badminton = () => {
       // Update existing match
       axios
         .put(
-          `http://localhost:5000/api/auth/updateMatch_Bad/${selectedMatch._id}`,
+          `http://13.201.93.229:5000/api/auth/updateMatch_Bad/${selectedMatch._id}`,
           {
             teamA: newMatch.teamA,
             teamB: newMatch.teamB,
@@ -135,7 +135,7 @@ const Badminton = () => {
     } else {
       // Add new match
       axios
-        .post("http://localhost:5000/api/auth/addMatch_Bad", {
+        .post("http://13.201.93.229:5000/api/auth/addMatch_Bad", {
           teamA: newMatch.teamA,
           teamB: newMatch.teamB,
           name: `${newMatch.teamA || "Team A"} VS ${
@@ -158,7 +158,7 @@ const Badminton = () => {
     if (selectedMatch) {
       axios
         .delete(
-          `http://localhost:5000/api/auth/deleteMatch_Bad/${selectedMatch._id}`
+          `http://13.201.93.229:5000/api/auth/deleteMatch_Bad/${selectedMatch._id}`
         )
         .then(() => {
           setMatches(
@@ -180,14 +180,14 @@ const Badminton = () => {
 
     axios
       .get(
-        `http://localhost:5000/api/auth/getPlayers_Bad/${match._id}?team=TeamA`
+        `http://13.201.93.229:5000/api/auth/getPlayers_Bad/${match._id}?team=TeamA`
       )
       .then((response) => setPlayersTeamA(response.data))
       .catch((error) => console.error(error));
 
     axios
       .get(
-        `http://localhost:5000/api/auth/getPlayers_Bad/${match._id}?team=TeamB`
+        `http://13.201.93.229:5000/api/auth/getPlayers_Bad/${match._id}?team=TeamB`
       )
       .then((response) => setPlayersTeamB(response.data))
       .catch((error) => console.error(error));
@@ -220,7 +220,7 @@ const Badminton = () => {
     if (selectedMatch) {
       axios
         .post(
-          `http://localhost:5000/api/auth/addPlayers_Bad/${selectedMatch._id}`,
+          `http://13.201.93.229:5000/api/auth/addPlayers_Bad/${selectedMatch._id}`,
           {
             ...playerFormData,
             rollNo: parseInt(playerFormData.rollNo), // Parse rollNo to integer
@@ -258,7 +258,7 @@ const Badminton = () => {
       // Update existing player
       axios
         .put(
-          `http://localhost:5000/api/auth/updatePlayerDetails_Bad/${matchId}/${playerId}`,
+          `http://13.201.93.229:5000/api/auth/updatePlayerDetails_Bad/${matchId}/${playerId}`,
           {
             player_name: playerFormData.player_name,
             roll_no: parseInt(playerFormData.roll_no), // Parse rollNo to integer
@@ -312,7 +312,7 @@ const Badminton = () => {
 
       axios
         .delete(
-          `http://localhost:5000/api/auth/deletePlayerDetails_Bad/${playerId}/${matchId}`
+          `http://13.201.93.229:5000/api/auth/deletePlayerDetails_Bad/${playerId}/${matchId}`
         )
         .then(() => {
           const updatedPlayers =

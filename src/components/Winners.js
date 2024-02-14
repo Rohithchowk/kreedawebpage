@@ -19,7 +19,7 @@ const Winners = () => {
   const fetchSportsItems = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/auth/sportsItems"
+        "http://13.201.93.229:5000/api/auth/sportsItems"
       );
       setSportsItems(response.data);
     } catch (error) {
@@ -39,7 +39,7 @@ const Winners = () => {
       formData.append("name", itemName); // Ensure name is appended to the FormData
       formData.append("image", selectedFile);
 
-      await axios.post("http://localhost:5000/api/auth/sportsItems", formData);
+      await axios.post("http://13.201.93.229:5000/api/auth/sportsItems", formData);
       // After adding the item, fetch the updated list
       fetchSportsItems();
       // Reset input fields
@@ -55,7 +55,7 @@ const Winners = () => {
   const handleDeleteItem = async (itemId) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/auth/sportsItems/${itemId}`
+        `http://13.201.93.229:5000/api/auth/sportsItems/${itemId}`
       );
       // After deleting the item, fetch the updated list
       fetchSportsItems();

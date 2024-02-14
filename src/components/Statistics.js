@@ -20,7 +20,7 @@ const Statistics = () => {
 
   const fetchStatistics = () => {
     axios
-      .get("http://localhost:5000/api/auth/getAllStatistics")
+      .get("http://13.201.93.229:5000/api/auth/getAllStatistics")
       .then((response) => setStatistics(response.data))
       .catch((error) => console.error(error));
   };
@@ -50,7 +50,7 @@ const Statistics = () => {
     if (selectedStatistic) {
       axios
         .put(
-          `http://localhost:5000/api/auth/updateStatistic/${selectedStatistic._id}`,
+          `http://13.201.93.229:5000/api/auth/updateStatistic/${selectedStatistic._id}`,
           data
         )
         .then(() => {
@@ -61,7 +61,7 @@ const Statistics = () => {
         .catch((error) => console.error(error));
     } else {
       axios
-        .post("http://localhost:5000/api/auth/addStatistic", data)
+        .post("http://13.201.93.229:5000/api/auth/addStatistic", data)
         .then(() => {
           fetchStatistics();
           setFormData({
@@ -78,7 +78,7 @@ const Statistics = () => {
     if (selectedStatistic) {
       axios
         .delete(
-          `http://localhost:5000/api/auth/deleteStatistic/${selectedStatistic._id}`
+          `http://13.201.93.229:5000/api/auth/deleteStatistic/${selectedStatistic._id}`
         )
         .then(() => {
           fetchStatistics();

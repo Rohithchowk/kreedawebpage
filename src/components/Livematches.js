@@ -19,7 +19,7 @@ const Livematches = () => {
   const fetchSportsItems = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/auth/sportsItems_live"
+        "http://13.201.93.229:5000/api/auth/sportsItems_live"
       );
       setSportsItems(response.data);
     } catch (error) {
@@ -40,7 +40,7 @@ const Livematches = () => {
       formData.append("image", selectedFile);
 
       await axios.post(
-        "http://localhost:5000/api/auth/sportsItems_live",
+        "http://13.201.93.229:5000/api/auth/sportsItems_live",
         formData
       );
       // After adding the item, fetch the updated list
@@ -58,7 +58,7 @@ const Livematches = () => {
   const handleDeleteItem = async (itemId) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/auth/sportsItems_live/${itemId}`
+        `http://13.201.93.229:5000/api/auth/sportsItems_live/${itemId}`
       );
       // After deleting the item, fetch the updated list
       fetchSportsItems();

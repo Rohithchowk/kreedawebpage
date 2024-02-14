@@ -37,7 +37,7 @@ const Cricket = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/getMatches_cricket")
+      .get("http://13.201.93.229:5000/api/auth/getMatches_cricket")
       .then((response) => setMatches(response.data))
       .catch((error) => console.error(error));
 
@@ -51,7 +51,7 @@ const Cricket = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/auth/sportsItems/name/cricket`)
+      .get(`http://13.201.93.229:5000/api/auth/sportsItems/name/cricket`)
       .then((response) => {
         setFootballImage(response.data.image);
       })
@@ -74,7 +74,7 @@ const Cricket = () => {
       console.log('Request Payload:', { matchId, team, score: newScore });
   
       // Send update request to backend
-      const response = await axios.put(`http://localhost:5000/api/auth/update-score_cricket/${matchId}`, {
+      const response = await axios.put(`http://13.201.93.229:5000/api/auth/update-score_cricket/${matchId}`, {
         team,
         score: newScore,
       });
@@ -108,7 +108,7 @@ const Cricket = () => {
       // Update existing match
       axios
         .put(
-          `http://localhost:5000/api/auth/updateMatch_cricket/${selectedMatch._id}`,
+          `http://13.201.93.229:5000/api/auth/updateMatch_cricket/${selectedMatch._id}`,
           {
             teamA: newMatch.teamA,
             teamB: newMatch.teamB,
@@ -134,7 +134,7 @@ const Cricket = () => {
     } else {
       // Add new match
       axios
-        .post("http://localhost:5000/api/auth/addMatch_cricket", {
+        .post("http://13.201.93.229:5000/api/auth/addMatch_cricket", {
           teamA: newMatch.teamA,
           teamB: newMatch.teamB,
           name: `${newMatch.teamA || "Team A"} VS ${
@@ -157,7 +157,7 @@ const Cricket = () => {
     if (selectedMatch) {
       axios
         .delete(
-          `http://localhost:5000/api/auth/deleteMatch_cricket/${selectedMatch._id}`
+          `http://13.201.93.229:5000/api/auth/deleteMatch_cricket/${selectedMatch._id}`
         )
         .then(() => {
           setMatches(
@@ -179,14 +179,14 @@ const Cricket = () => {
 
     axios
       .get(
-        `http://localhost:5000/api/auth/getPlayers_cricket/${match._id}?team=TeamA`
+        `http://13.201.93.229:5000/api/auth/getPlayers_cricket/${match._id}?team=TeamA`
       )
       .then((response) => setPlayersTeamA(response.data))
       .catch((error) => console.error(error));
 
     axios
       .get(
-        `http://localhost:5000/api/auth/getPlayers_cricket/${match._id}?team=TeamB`
+        `http://13.201.93.229:5000/api/auth/getPlayers_cricket/${match._id}?team=TeamB`
       )
       .then((response) => setPlayersTeamB(response.data))
       .catch((error) => console.error(error));
@@ -219,7 +219,7 @@ const Cricket = () => {
     if (selectedMatch) {
       axios
         .post(
-          `http://localhost:5000/api/auth/addPlayers_cricket/${selectedMatch._id}`,
+          `http://13.201.93.229:5000/api/auth/addPlayers_cricket/${selectedMatch._id}`,
           {
             ...playerFormData,
             rollNo: parseInt(playerFormData.rollNo), // Parse rollNo to integer
@@ -257,7 +257,7 @@ const Cricket = () => {
       // Update existing player
       axios
         .put(
-          `http://localhost:5000/api/auth/updatePlayerDetails_cricket/${matchId}/${playerId}`,
+          `http://13.201.93.229:5000/api/auth/updatePlayerDetails_cricket/${matchId}/${playerId}`,
           {
             player_name: playerFormData.player_name,
             roll_no: parseInt(playerFormData.roll_no), // Parse rollNo to integer
@@ -311,7 +311,7 @@ const Cricket = () => {
 
       axios
         .delete(
-          `http://localhost:5000/api/auth/deletePlayerDetails_cricket/${playerId}/${matchId}`
+          `http://13.201.93.229:5000/api/auth/deletePlayerDetails_cricket/${playerId}/${matchId}`
         )
         .then(() => {
           const updatedPlayers =
